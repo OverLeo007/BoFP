@@ -23,8 +23,9 @@ object Utils {
     @tailrec
     def iteration(i: BigDecimal): Unit = {
       body(i)
-      if (i < stop) iteration(i + step)
+      if (if (start < stop) i < stop else i > stop) iteration(i + step)
     }
+
     iteration(start)
   }
 

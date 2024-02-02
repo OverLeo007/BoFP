@@ -23,12 +23,12 @@ class Taylor(
             ) {
 
   // Проверяем адекватность параметров
-  if (dx <= 0 || e <= 0 || xS >= xF) {
-    throw new IllegalArgumentException("Некорректные параметры")
+  if (e <= 0) {
+    throw new IllegalArgumentException("е не может быть отрицательным")
   }
 
   // Проверяем достижимость xF от xS с заданным шагом
-  if ((xF - xS) % dx != 0) {
+  if ((xF - xS).abs < (xF - (xS + dx)).abs || (xF - xS).abs % dx.abs != 0) {
     throw new IllegalArgumentException("Невозможно достичь xF от xS с заданным шагом dx.")
   }
 
@@ -60,13 +60,15 @@ class Taylor(
       }.takeWhile(_.abs >= e)
       (terms.sum, terms.size)
     }
-
+    println("╟" + "─" * 12 + "┼" + "─" * 22 + "┼" + "─" * 22 + "┼" + "─" * 7 + "╢")
+    if (x == 0) {
+      println(f"║ $x          │ NaN                  │ NaN                  │ NaN   ║")
+      return
+    }
     val funcRes = taylorFunc()
     val taylorFuncResult = funcRes._1.setScale(15 min e.scale, BigDecimal.RoundingMode.HALF_UP)
-    val termsCount = funcRes._2
-
     val builtItFuncResult = func(x).setScale(15 min e.scale, BigDecimal.RoundingMode.HALF_UP)
-    println("╟" + "─" * 12 + "┼" + "─" * 22 + "┼" + "─" * 22 + "┼" + "─" * 7 + "╢")
+    val termsCount = funcRes._2
     println(f"║ $x%-10s │ $builtItFuncResult%-20s │ $taylorFuncResult%-20s │ $termsCount%-5s ║")
 
   }
