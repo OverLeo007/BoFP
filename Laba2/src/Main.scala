@@ -1,6 +1,14 @@
 import scala.io.Source
 
+/**
+ * Объект, содержащий точку входа в приложение.
+ */
 object Main {
+  /**
+   * Точка входа в приложение.
+   *
+   * @param args Аргументы командной строки.
+   */
   def main(args: Array[String]): Unit = {
     if (args.length == 0) {
       System.err.println(s"Введите имя файла")
