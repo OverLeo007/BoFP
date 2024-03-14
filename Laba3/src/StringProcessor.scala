@@ -52,7 +52,6 @@ class StringProcessor {
    * @throws IllegalArgumentException Если действие некорректно или аргументы некорректны.
    */
   def process(action: Action, str: String, charArgs: Char*): String = {
-
     action match
       case Actions.CLEAR => clearing(str)
       case Actions.DELETE => if (charArgs.length != 1) failure(Actions.DELETE, charArgs) else deleting(str, charArgs.head)

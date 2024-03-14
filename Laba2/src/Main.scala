@@ -21,7 +21,13 @@ object Main {
       if (lines.isEmpty) System.err.println("Файл пуст")
       else {
         lines.zipWithIndex.foreach { case (line, index) =>
-          println(s"Line $index: ${line.split("\\s+").maxBy(_.length)}")
+          val splitLine = line.split("\\s+")
+          if (splitLine.isEmpty) {
+            println(s"Line $index: Only spaces in string")
+          } else {
+            val maxWord = splitLine.maxBy(_.length)
+            println(s"Line $index: ${if (maxWord.isEmpty) "\u001b[31;0mline is empty\u001b[0;0m" else maxWord}")
+          }
         }
       }
     } catch {
