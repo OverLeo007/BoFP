@@ -1,6 +1,7 @@
 **/.bsp/
-**/.ide/
+**/.idea/
 **/target/
 **/project/project/
 **/project/target/
 **/out/
+other/**
