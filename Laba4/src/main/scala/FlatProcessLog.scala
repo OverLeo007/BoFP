@@ -1,7 +1,5 @@
 package ru.paskal.laba4
 
-import java.util.Optional
-
 class FlatProcessLog(
                   val inpStr: String,
                   val actionName: String,
@@ -14,9 +12,6 @@ class FlatProcessLog(
 
 
   private def canEqual(other: Any): Boolean = other.isInstanceOf[FlatProcessLog]
-
-
-
 
   override def toString = s"Log(index=$index, inpStr=$inpStr, resStr=$resStr, actionName=$actionName, arg1=$arg1, arg2=$arg2, startStr=$startStr)"
 
