@@ -148,7 +148,7 @@ object UI extends MenuEnum {
 
   @tailrec
   private def chooseIndex(prompt: String, listSize: Int): Int = {
-    print(prompt)
+    println(prompt)
     val index = StdIn.readInt()
     if (index < 0 || index >= listSize) {
       System.err.println("Ошибка: введите корректный индекс.")
